@@ -1,27 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>My Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    img {
+      max-width: 400px;
+      display: block;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
-
 <body>
 
   <h1>My Project</h1>
 
   <!-- Image -->
-  <img src="images/pic.png" alt="My Image">
+  <h2>Wiring Diagram</h2>
+  <img src="Pics/Wiring.jpg" alt="Wiring Diagram">
 
-  <!-- Link to code file -->
-  <p><a href="code/example.py">View my Python file</a></p>
+  <!-- Code Text File -->
+  <h2>Code File</h2>
+  <pre id="code-content">Loading code...</pre>
 
-  <!-- Show code directly on page -->
-  <pre id="code"></pre>
+  <!-- README -->
+  <h2>README</h2>
+  <pre id="readme-content">Loading README...</pre>
 
   <script>
-    fetch("code/example.py")
-      .then(res => res.text())
+    // Load Code.text
+    fetch("Code/Code.text")
+      .then(response => response.text())
       .then(data => {
-        document.getElementById("code").textContent = data;
+        document.getElementById("code-content").textContent = data;
+      })
+      .catch(() => {
+        document.getElementById("code-content").textContent = "Failed to load code file.";
+      });
+
+    // Load README.md
+    fetch("README.md")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("readme-content").textContent = data;
+      })
+      .catch(() => {
+        document.getElementById("readme-content").textContent = "Failed to load README.";
       });
   </script>
 
