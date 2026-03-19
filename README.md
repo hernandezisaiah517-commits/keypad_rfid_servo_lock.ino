@@ -18,8 +18,6 @@ This project implements a secure access control system using Arduino with both k
 - Jumper wires
 - Breadboard
 
-## Wiring
-
 
 ## Installation
 1. Clone the repository
